@@ -3,7 +3,7 @@ import openai
 
 app = Flask(__name__)
 
-openai.api_key = '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'
+openai.api_key = 'YOUR API KEY'
 
 message_history = []
 
