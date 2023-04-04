@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1>Chatbot App</h1>
+    {% for user_input, bot_reply in response %}
+      {% if "```" in bot_reply %}
+      <div class="message user-message">
+        <p>{{ user_input }}</p>
+      </div>
+      <div class="message bot-message">
+        <pre><code>{{ bot_reply }}</code></pre>
+      </div>
+      {% else %}
+      <div class="message user-message">
+        <p>{{ user_input }}</p>
+      </div>
+      <div class="message bot-message">
+        <p>{{ bot_reply }}</p>
+      </div>
+      {% endif %}
+    {% endfor %}
+    <form method="POST" action="{{ url_for('chatbot') }}">
+      <textarea name="input_text" placeholder="Type your message here..."></textarea>
+      <input type="submit" value="Send">
+    </form>
+  </body>
+</html>
